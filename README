@@ -1,4 +1,6 @@
 Original one is from Edsko de Vries.
 
 % cabal install distributed-process
+% cabal install network-transport-tcp
+% ghc -O -threaded -rtsopts cloudhaskell.hs
 
