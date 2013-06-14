@@ -1,5 +1,6 @@
 all:
-	ghc -O -threaded -Wall -rtsopts cloudhaskell.hs
+	ghc -O -threaded -Wall -rtsopts server.hs
+	ghc -O -threaded -Wall -rtsopts client.hs
 
 clean:
-	rm -f cloudhaskell *.o *.hi
+	rm -f server client *.o *.hi
