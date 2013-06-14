@@ -49,12 +49,12 @@ counter = go 0
         Right them -> send them n >> go 0
 
 count :: (Int, Int) -> ProcessId -> Process ()
-count (packets, size) them = do
+count (packets, siz) them = do
   us <- getSelfPid
-  replicateM_ packets $ send them (nats size)
+  replicateM_ packets $ send them (nats siz)
   send them us
   n' <- expect
-  liftIO $ print (packets * size, n' == packets * size)
+  liftIO $ print (packets * siz, n' == packets * siz)
 
 initialProcess :: String -> Process ()
 initialProcess "SERVER" = do
