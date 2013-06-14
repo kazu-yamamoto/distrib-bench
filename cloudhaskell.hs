@@ -1,14 +1,15 @@
 {-# LANGUAGE DeriveDataTypeable, BangPatterns #-}
 
-import System.Environment
-import Control.Monad
 import Control.Applicative
 import Control.Distributed.Process
 import Control.Distributed.Process.Node
-import Network.Transport.TCP (createTransport, defaultTCPParameters)
+import Control.Monad
 import Data.Binary
 import qualified Data.ByteString.Lazy as BSL
 import Data.Typeable
+import Network.Transport.TCP (createTransport, defaultTCPParameters)
+import System.Environment
+import System.Exit
 
 data SizedList a = SizedList { size :: Int , elems :: [a] }
   deriving (Typeable)
@@ -65,10 +66,17 @@ initialProcess "CLIENT" = do
   n <- liftIO $ getLine
   them <- liftIO $ decode <$> BSL.readFile "counter.pid"
   count (read n) them
+initialProcess _ = error "initialProcess"
 
 main :: IO ()
 main = do
   [role, host, port] <- getArgs
-  Right transport <- createTransport host port defaultTCPParameters
-  node <- newLocalNode transport initRemoteTable
-  runProcess node $ initialProcess role
+  unless (role `elem` ["SERVER","CLIENT"]) $ do
+      putStrLn $ "Bad role: " ++ role ++ ". Use either SERVER or CLIENT"
+      exitFailure
+  et <- createTransport host port defaultTCPParameters
+  case et of
+      Right transport -> do
+          node <- newLocalNode transport initRemoteTable
+          runProcess node $ initialProcess role
+      Left _ -> putStrLn "Bad address or port"
