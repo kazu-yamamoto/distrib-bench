@@ -1,0 +1,33 @@
+Name:                   distrib-bench
+Version:                0.0.0
+Author:                 Kazu Yamamoto <kazu@iij.ad.jp>
+Maintainer:             Kazu Yamamoto <kazu@iij.ad.jp>
+License:                BSD3
+License-File:           LICENSE
+Synopsis:               Throughput benchmark for Cloud Haskell
+Description:            Throughput benchmark for Cloud Haskell
+Category:               Network
+Cabal-Version:          >= 1.8
+Build-Type:             Simple
+
+Executable server
+  Main-Is:              server.hs
+  GHC-Options:          -Wall -threaded -rtsopts
+  Build-Depends:        base >= 4.0 && < 5
+                      , network-transport-tcp
+                      , distributed-process
+                      , bytestring
+                      , base64-bytestring
+                      , binary
+  Other-Modules:        SizedList
+
+Executable client
+  Main-Is:              client.hs
+  GHC-Options:          -Wall -threaded -rtsopts
+  Build-Depends:        base >= 4.0 && < 5
+                      , network-transport-tcp
+                      , distributed-process
+                      , bytestring
+                      , base64-bytestring
+                      , binary
+  Other-Modules:        SizedList
