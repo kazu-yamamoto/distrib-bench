@@ -25,7 +25,7 @@ that of Erlang
 
 ### server (172.16.1.1):
 
-    % erl -name foo@172.16.1.1
+    % erl -name foo@172.16.1.1 -setcookie abc
     > c(erlserver).
     {ok,erlserver}
     > erlserver:start_server().
@@ -33,7 +33,7 @@ that of Erlang
 
 ### client (172.16.1.2):
 
-    % erl -name bar@172.16.1.2
+    % erl -name bar@172.16.1.2 -setcookie abc
     > c(erlclient).
     {ok,erlclient}
     > erlclient:start_client(1000,1000,'foo@172.16.1.1').
