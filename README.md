@@ -1,9 +1,11 @@
+# distrib-bench
+
 Benchmark for throughput to compare performance of Haskell and
 that of Erlang
 
-# "server" and "client" in Haskell
+## "server" and "client" in Haskell
 
-## server (172.16.1.1):
+### server (172.16.1.1):
 
     % cabal install
     % server 172.16.1.1 8000
@@ -11,7 +13,7 @@ that of Erlang
     Copy the following to your client:
     AAAAAAAAABExNzIuMTYuMS4xOjgwMDA6MGhwMYwAAAAD
 
-## client (172.16.1.2):
+### client (172.16.1.2):
 
     % cabal install 
     % client 172.16.1.2 8000 AAAAAAAAABExNzIuMTYuMS4xOjgwMDA6MGhwMYwAAAAD 1000 1000
@@ -19,9 +21,9 @@ that of Erlang
 
     Note the last two arguments are the number of packets and their size.
 
-# "bench" in Erlang
+## "bench" in Erlang
 
-## server (172.16.1.1):
+### server (172.16.1.1):
 
     % erl -name foo@172.16.1.1
     > c(erlserver).
@@ -29,7 +31,7 @@ that of Erlang
     > erlserver:start_server().
     true
 
-## client (172.16.1.2):
+### client (172.16.1.2):
 
     % erl -name bar@172.16.1.2
     > c(erlclient).
@@ -39,6 +41,6 @@ that of Erlang
 
     Note the first two arguments are the number of packets and their size.
 
-# Credits
+## Credits
 
 Original one is from Edsko de Vries.
