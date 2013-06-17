@@ -21,7 +21,7 @@ that of Erlang
 
     Note the last two arguments are the number of packets and their size.
 
-## "bench" in Erlang
+## "start_server" and "start_client" in Erlang
 
 ### server (172.16.1.1):
 
