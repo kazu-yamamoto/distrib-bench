@@ -1,6 +1,6 @@
 -module(erlclient).
 
--export([start_client/3]).
+-export([start_client/1]).
 
 nats(0) ->
   [];
@@ -20,5 +20,7 @@ client(Packets, Size, Node) ->
     N -> io:format("Did ~B pings ", [N])
   end.
 
-start_client(Packets, Size, Node) ->
-  client(Packets, Size, Node).
+start_client([Packets, Size, Node]) ->
+	client(list_to_integer(atom_to_list(Packets)), 
+		list_to_integer(atom_to_list(Size)), 
+		Node).
