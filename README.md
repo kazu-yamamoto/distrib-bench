@@ -1,5 +1,11 @@
 # distrib-bench
 
+## Notice on this fork
+
+erlclient:start\_client/3 has been changed to start\_client/1 to accept arguments from `erl -s` options, for example:
+
+    erl -name bar@127.0.0.1 -setcookie abc -noshell -s erlclient start_client 1000 1000 foo@127.0.0.1 -s init stop
+
 Benchmark for throughput to compare performance of Haskell and
 that of Erlang
 
