@@ -25,11 +25,8 @@ that of Erlang
 
 ### server (172.16.1.1):
 
-    % erl -name foo@172.16.1.1 -setcookie abc
-    > c(erlserver).
-    {ok,erlserver}
-    > erlserver:start_server().
-    true
+    % make
+    % erl -noshell -name foo@172.16.1.1 -setcookie abc -s erlserver start_server
 
 ### client (172.16.1.2):
 
