@@ -26,17 +26,13 @@ that of Erlang
 ### server (172.16.1.1):
 
     % make
-    % erl -noshell -name foo@172.16.1.1 -setcookie abc -s erlserver start_server
+    % erl -noshell -name foo@172.16.1.1 -setcookie abc -run erlserver start_server
 
 ### client (172.16.1.2):
 
-    % erl -name bar@172.16.1.2 -setcookie abc
-    > c(erlclient).
-    {ok,erlclient}
-    > erlclient:start_client(1000,1000,'foo@172.16.1.1').
-    Did 1000000 pings ok
+    % erl -noshell -name bar@172.16.1.2 -setcookie abc -run erlclient start_client foo@172.16.1.1 1000 1000
 
-    Note the first two arguments are the number of packets and their size.
+    Note the last two arguments are the number of packets and their size.
 
 ## Credits
 
