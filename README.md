@@ -19,7 +19,7 @@ that of Erlang
     % client 172.16.1.2 8000 AAAAAAAAABExNzIuMTYuMS4xOjgwMDA6MGhwMYwAAAAD 1000 1000
     (1000000,True)
 
-    Note the last two arguments are the number of packets and their size.
+Note the last two arguments are the number of packets and their size.
 
 ## "start_server" and "start_client" in Erlang
 
@@ -30,9 +30,10 @@ that of Erlang
 
 ### client (172.16.1.2):
 
+    % make
     % erl -noshell -name bar@172.16.1.2 -setcookie abc -run erlclient start_client foo@172.16.1.1 1000 1000
 
-    Note the last two arguments are the number of packets and their size.
+Note the last two arguments are the number of packets and their size.
 
 ## Credits
 
